@@ -45,6 +45,7 @@ Notably, a couple of capacity constrained majors is notoriously tough to get int
 >This serves as a memo for my journey, you might find something inspiring or you can skip to the Tips section
 
 ## Freshman Year 2021 - 2022
+**incoming!**
 
 ## Sophomore Year 2022 - 2023
 

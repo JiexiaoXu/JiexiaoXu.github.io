@@ -20,4 +20,3 @@ redirect_from:
 - **Bachelor of Science in Computer Science**  
   University of Washington, Seattle, WA  
   **2021 June - Present**
-

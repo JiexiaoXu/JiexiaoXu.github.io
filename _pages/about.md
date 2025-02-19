@@ -24,4 +24,4 @@ redirect_from:
 ## Publication
 
 - **Scalable and Accurate Application-level Crash-Consistency Testing via Representative Testing.** 
-  Yile Gu\*, Ian Neal\*, ***Jiexiao Xu***, Shaun Christopher Lee, Ayman Said, Musa Haydar, Jacob Van Geffen, Rohan Kadekodi, Andree Quinn, Baris Kasikci. **[update: Major Revision]**
+  Yile Gu\*, Ian Neal\*, ***Jiexiao Xu***, Shaun Christopher Lee, Ayman Said, Musa Haydar, Jacob Van Geffen, Rohan Kadekodi, Andree Quinn, Baris Kasikci. **[OOPSLA 2025]**

@@ -13,8 +13,6 @@ redirect_from:
 
 🎾In my spare time, I enjoy staying active with tennis rallies and traveling, with a special fondness for trying ice creams at local shops.
 
-🏫**Currently, I am looking for a Ph.D. position starting in Fall 2025. Please reach out if you are interested or have any opportunities!**
-
 ## Education
 
 - **Bachelor of Science in Computer Science**  

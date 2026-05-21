@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Jiexiao Xu 徐捷骁</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="#">Jiexiao Xu 徐捷骁</a>
+      <div class="header-tools">
+        <nav aria-label="Primary navigation">
+          <a href="#research">Research</a>
+          <a href="#projects">Projects</a>
+          <a href="#publications">Publication</a>
+        </nav>
+        <button class="mode-toggle" type="button" aria-label="Switch color theme" aria-pressed="false">
+          <span class="mode-icon" aria-hidden="true"></span>
+          <span class="mode-text">Dark</span>
+        </button>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero index-hero" aria-labelledby="intro-title">
+        <div class="intro-copy">
+          <h1 id="intro-title" data-text="Jiexiao Xu">Jiexiao Xu</h1>
+          <p class="lead">
+            I am a combined B.S./M.S. student in Computer Science at the
+            University of Washington, broadly interested in computer systems
+            and computer graphics.
+          </p>
+          <p>
+            My current work studies end-to-end SLO-aware scheduling in
+            microservices. I have also worked on application-level
+            crash-consistency testing and rendering-pipeline optimizations for
+            3D Gaussian Splatting.
+          </p>
+          <div class="link-row" aria-label="Profile links">
+            <a href="mailto:jiexiao@cs.washington.edu">Email</a>
+            <a href="https://github.com/JiexiaoXu">GitHub</a>
+            <a href="https://www.linkedin.com/in/jiexiao-xu-713039370/">LinkedIn</a>
+            <a href="https://scholar.google.com/citations?user=QGbEc68AAAAJ&amp;hl=en&amp;authuser=1">Google Scholar</a>
+          </div>
+        </div>
+
+        <aside class="current-panel" aria-label="Current work">
+          <p class="eyebrow">Current</p>
+          <ul>
+            <li>Incoming Ph.D. student at the University of Pennsylvania</li>
+            <li>Advised by Professors Josh Fried and Vincent Liu</li>
+            <li>Working on SLO-aware scheduling for microservices</li>
+          </ul>
+        </aside>
+      </section>
+
+      <section class="section-grid compact-section" id="research" aria-labelledby="research-title">
+        <div class="section-heading">
+          <h2 id="research-title">Research</h2>
+        </div>
+        <div class="interest-list">
+          <article>
+            <h3>Computer systems</h3>
+            <p>End-to-end SLO-aware scheduling for microservices, using deadlines and downstream workload estimation to improve goodput under overload.</p>
+          </article>
+          <article>
+            <h3>System reliability</h3>
+            <p>Application-level crash-consistency testing through representative testing that groups similar crash states for scalable and accurate testing.</p>
+          </article>
+          <article>
+            <h3>Computer graphics</h3>
+            <p>Rendering-pipeline optimizations for 3D Gaussian Splatting, including clustering-based approaches to reduce sorting overhead.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="content-split" id="projects" aria-labelledby="projects-title">
+        <div>
+          <h2 id="projects-title">Projects</h2>
+        </div>
+        <div class="item-stack">
+          <article class="work-item">
+            <div>
+              <h3>SLO-aware microservice scheduling</h3>
+              <p>Schedulers that use end-to-end deadlines and downstream workload estimation to improve goodput under overload.</p>
+            </div>
+            <a href="https://github.com/vic-lsh/masa">Code</a>
+          </article>
+          <article class="work-item">
+            <div>
+              <h3>Representative crash-consistency testing</h3>
+              <p>A framework for grouping similar crash states to make application-level crash-consistency testing scalable and accurate.</p>
+            </div>
+            <a href="https://dl.acm.org/doi/abs/10.1145/3720431">Paper</a>
+          </article>
+          <article class="work-item">
+            <div>
+              <h3>3D Gaussian Splatting rendering</h3>
+              <p>Optimizations to reduce sorting overhead and improve runtime and memory usage for real-time 3D reconstruction.</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="content-split" id="publications" aria-labelledby="publications-title">
+        <div>
+          <h2 id="publications-title">Publication</h2>
+        </div>
+        <div class="article-list">
+          <a href="https://dl.acm.org/doi/abs/10.1145/3720431">
+            <span>OOPSLA 2025</span>
+            <span class="publication-detail">
+              <strong>Scalable and Accurate Application-level Crash-Consistency Testing via Representative Testing</strong>
+              <small>Yile Gu*, Ian Neal*, Jiexiao Xu, Shaun Christopher Lee, Ayman Said, Musa Haydar, Jacob Van Geffen, Rohan Kadekodi, Andree Quinn, Baris Kasikci</small>
+            </span>
+          </a>
+        </div>
+      </section>
+
+      <section class="news-band" aria-labelledby="news-title">
+        <h2 id="news-title">Recent</h2>
+        <ol>
+          <li><time datetime="2026">2026</time> Starting a Ph.D. at the University of Pennsylvania with Professors Josh Fried and Vincent Liu.</li>
+          <li><time datetime="2025">2025</time> Paper accepted to OOPSLA 2025 on application-level crash-consistency testing.</li>
+          <li><time datetime="2025">2025</time> Working on SLO-aware scheduling in microservices with Shihang Li, Simon Peter, and Ratul Mahajan.</li>
+          <li><time datetime="2025">2025</time> Exploring 3D Gaussian Splatting rendering optimizations with Gilbert Bernstein.</li>
+        </ol>
+      </section>
+    </main>
+
+    <footer id="contact">
+      <p>Email: jiexiao@cs.washington.edu</p>
+      <p><a href="blog/">Blog</a> · in construction</p>
+    </footer>
+    <script>
+      const modeButton = document.querySelector(".mode-toggle");
+      const modeText = document.querySelector(".mode-text");
+      const savedMode = localStorage.getItem("color-mode");
+
+      function applyMode(mode, persist = true) {
+        document.documentElement.dataset.mode = mode;
+        if (persist) {
+          localStorage.setItem("color-mode", mode);
+        }
+        const isDark = mode === "dark";
+        modeButton.setAttribute("aria-pressed", String(isDark));
+        modeText.textContent = isDark ? "Light" : "Dark";
+      }
+
+      document.documentElement.dataset.palette = "indigo";
+      applyMode(savedMode || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"), Boolean(savedMode));
+
+      modeButton.addEventListener("click", () => {
+        const currentMode = document.documentElement.dataset.mode;
+        const systemDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+        const activeMode = currentMode || (systemDark ? "dark" : "light");
+        applyMode(activeMode === "dark" ? "light" : "dark");
+      });
+    </script>
+  </body>
+</html>

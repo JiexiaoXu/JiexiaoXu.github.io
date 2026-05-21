@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% if page.title %}{{ page.title }} - {% endif %}{{ site.title }}</title>
+    <link rel="stylesheet" href="{{ '/styles.css' | relative_url }}">
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="{{ '/' | relative_url }}">Jiexiao Xu 徐捷骁</a>
+      <div class="header-tools">
+        <nav aria-label="Primary navigation">
+          <a href="{{ '/' | relative_url }}#research">Research</a>
+          <a href="{{ '/' | relative_url }}#projects">Projects</a>
+          <a href="{{ '/' | relative_url }}#publications">Publication</a>
+        </nav>
+        <button class="mode-toggle" type="button" aria-label="Switch color theme" aria-pressed="false">
+          <span class="mode-icon" aria-hidden="true"></span>
+          <span class="mode-text">Dark</span>
+        </button>
+      </div>
+    </header>
+
+    <main>
+      {{ content }}
+    </main>
+
+    <footer id="contact">
+      <p>Email: jiexiao@cs.washington.edu</p>
+      <p><a href="{{ '/blog/' | relative_url }}">Blog</a> · in construction</p>
+    </footer>
+    <script>
+      const modeButton = document.querySelector(".mode-toggle");
+      const modeText = document.querySelector(".mode-text");
+      const savedMode = localStorage.getItem("color-mode");
+
+      function applyMode(mode, persist = true) {
+        document.documentElement.dataset.mode = mode;
+        if (persist) {
+          localStorage.setItem("color-mode", mode);
+        }
+        const isDark = mode === "dark";
+        modeButton.setAttribute("aria-pressed", String(isDark));
+        modeText.textContent = isDark ? "Light" : "Dark";
+      }
+
+      document.documentElement.dataset.palette = "indigo";
+      applyMode(savedMode || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"), Boolean(savedMode));
+
+      modeButton.addEventListener("click", () => {
+        const currentMode = document.documentElement.dataset.mode;
+        const systemDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+        const activeMode = currentMode || (systemDark ? "dark" : "light");
+        applyMode(activeMode === "dark" ? "light" : "dark");
+      });
+    </script>
+  </body>
+</html>

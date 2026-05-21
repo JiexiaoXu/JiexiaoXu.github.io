@@ -1,0 +1,27 @@
+---
+layout: base
+title: Blog
+permalink: /blog/
+---
+
+<section class="blog-index" aria-labelledby="blog-title">
+  <div class="section-heading">
+    <p class="eyebrow">Notes</p>
+    <h1 id="blog-title">Blog</h1>
+    <p class="construction-note">In construction.</p>
+  </div>
+
+  <div class="post-list">
+    {% for post in site.posts %}
+      <article class="post-list-item">
+        <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%B %-d, %Y" }}</time>
+        <h2><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>
+        {% if post.excerpt %}
+          <p>{{ post.excerpt | strip_html | truncate: 180 }}</p>
+        {% endif %}
+      </article>
+    {% else %}
+      <p class="empty-note">No posts yet.</p>
+    {% endfor %}
+  </div>
+</section>

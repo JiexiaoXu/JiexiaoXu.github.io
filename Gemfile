@@ -1,11 +1,6 @@
-source 'https://rubygems.org'
+source "https://rubygems.org"
 
-group :jekyll_plugins do
-  gem 'jekyll'
-  gem 'jekyll-feed'
-  gem 'jekyll-sitemap'
-  gem 'jemoji'
-  gem 'webrick', '~> 1.8'
-end
-
-gem 'github-pages'
+gem "jekyll", "~> 3.9"
+gem "kramdown-parser-gfm", "~> 1.1"
+gem "ffi", "~> 1.15.5"
+gem "webrick", "~> 1.8"

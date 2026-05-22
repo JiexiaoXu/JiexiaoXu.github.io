@@ -4,6 +4,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{% if page.title %}{{ page.title }} - {% endif %}{{ site.title }}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Hanken+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ '/styles.css' | relative_url }}">
   </head>
   <body>
@@ -11,9 +14,9 @@
       <a class="brand" href="{{ '/' | relative_url }}">Jiexiao Xu 徐捷骁</a>
       <div class="header-tools">
         <nav aria-label="Primary navigation">
-          <a href="{{ '/' | relative_url }}#research">Research</a>
+          <a href="{{ '/' | relative_url }}#education">Education</a>
           <a href="{{ '/' | relative_url }}#projects">Projects</a>
-          <a href="{{ '/' | relative_url }}#publications">Publication</a>
+          <a href="{{ '/' | relative_url }}#publications">Publications</a>
         </nav>
         <button class="mode-toggle" type="button" aria-label="Switch color theme" aria-pressed="false">
           <span class="mode-icon" aria-hidden="true"></span>

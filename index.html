@@ -4,6 +4,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Jiexiao Xu 徐捷骁</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Hanken+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
   </head>
   <body>
@@ -11,9 +14,9 @@
       <a class="brand" href="#">Jiexiao Xu 徐捷骁</a>
       <div class="header-tools">
         <nav aria-label="Primary navigation">
-          <a href="#research">Research</a>
+          <a href="#education">Education</a>
           <a href="#projects">Projects</a>
-          <a href="#publications">Publication</a>
+          <a href="#publications">Publications</a>
         </nav>
         <button class="mode-toggle" type="button" aria-label="Switch color theme" aria-pressed="false">
           <span class="mode-icon" aria-hidden="true"></span>
@@ -49,30 +52,42 @@
           <p class="eyebrow">Current</p>
           <ul>
             <li>Incoming Ph.D. student at the University of Pennsylvania</li>
-            <li>Advised by Professors Josh Fried and Vincent Liu</li>
+            <li>Advised by Professors <a href="https://joshfried.io/">Josh Fried</a> and <a href="https://vincen.tl/">Vincent Liu</a></li>
             <li>Working on SLO-aware scheduling for microservices</li>
           </ul>
         </aside>
       </section>
 
-      <section class="section-grid compact-section" id="research" aria-labelledby="research-title">
-        <div class="section-heading">
-          <h2 id="research-title">Research</h2>
+      <section class="content-split" id="education" aria-labelledby="education-title">
+        <div>
+          <h2 id="education-title">Education</h2>
         </div>
-        <div class="interest-list">
-          <article>
-            <h3>Computer systems</h3>
-            <p>End-to-end SLO-aware scheduling for microservices, using deadlines and downstream workload estimation to improve goodput under overload.</p>
+        <div class="education-list">
+          <article class="education-item">
+            <div>
+              <h3>University of Pennsylvania</h3>
+              <p>Incoming Ph.D. student in Computer and Information Science.</p>
+            </div>
+            <span class="education-date">2026</span>
           </article>
-          <article>
-            <h3>System reliability</h3>
-            <p>Application-level crash-consistency testing through representative testing that groups similar crash states for scalable and accurate testing.</p>
-          </article>
-          <article>
-            <h3>Computer graphics</h3>
-            <p>Rendering-pipeline optimizations for 3D Gaussian Splatting, including clustering-based approaches to reduce sorting overhead.</p>
+          <article class="education-item">
+            <div>
+              <h3>University of Washington</h3>
+              <p>Combined B.S./M.S. student in Computer Science.</p>
+            </div>
+            <span class="education-date">2021-2026</span>
           </article>
         </div>
+      </section>
+
+      <section class="news-band" aria-labelledby="news-title">
+        <h2 id="news-title">Recent</h2>
+        <ol>
+          <li><time datetime="2026">2026</time><span>Starting a Ph.D. at the University of Pennsylvania with Professors <a href="https://joshfried.io/">Josh Fried</a> and <a href="https://vincen.tl/">Vincent Liu</a>.</span></li>
+          <li><time datetime="2025">2025</time><span>Paper accepted to OOPSLA 2025 on application-level crash-consistency testing.</span></li>
+          <li><time datetime="2025">2025</time><span>Working on SLO-aware scheduling in microservices with <a href="https://vic-li.me/">Shihang Li</a>, <a href="https://homes.cs.washington.edu/~simpeter/">Simon Peter</a>, and <a href="https://ratul.org/">Ratul Mahajan</a>.</span></li>
+          <li><time datetime="2025">2025</time><span>Exploring 3D Gaussian Splatting rendering optimizations with <a href="http://www.gilbertbernstein.com/">Gilbert Bernstein</a>.</span></li>
+        </ol>
       </section>
 
       <section class="content-split" id="projects" aria-labelledby="projects-title">
@@ -105,27 +120,18 @@
 
       <section class="content-split" id="publications" aria-labelledby="publications-title">
         <div>
-          <h2 id="publications-title">Publication</h2>
+          <h2 id="publications-title">Publications</h2>
         </div>
         <div class="article-list">
-          <a href="https://dl.acm.org/doi/abs/10.1145/3720431">
+          <article class="publication-item">
             <span>OOPSLA 2025</span>
             <span class="publication-detail">
               <strong>Scalable and Accurate Application-level Crash-Consistency Testing via Representative Testing</strong>
-              <small>Yile Gu*, Ian Neal*, Jiexiao Xu, Shaun Christopher Lee, Ayman Said, Musa Haydar, Jacob Van Geffen, Rohan Kadekodi, Andree Quinn, Baris Kasikci</small>
+              <small><a href="https://ikace.github.io/">Yile Gu</a>*, Ian Neal*, Jiexiao Xu, Shaun Christopher Lee, Ayman Said, Musa Haydar, Jacob Van Geffen, Rohan Kadekodi, Andree Quinn, <a href="https://homes.cs.washington.edu/~baris/">Baris Kasikci</a></small>
+              <a class="paper-action" href="https://dl.acm.org/doi/abs/10.1145/3720431">Paper ↗</a>
             </span>
-          </a>
+          </article>
         </div>
-      </section>
-
-      <section class="news-band" aria-labelledby="news-title">
-        <h2 id="news-title">Recent</h2>
-        <ol>
-          <li><time datetime="2026">2026</time> Starting a Ph.D. at the University of Pennsylvania with Professors Josh Fried and Vincent Liu.</li>
-          <li><time datetime="2025">2025</time> Paper accepted to OOPSLA 2025 on application-level crash-consistency testing.</li>
-          <li><time datetime="2025">2025</time> Working on SLO-aware scheduling in microservices with Shihang Li, Simon Peter, and Ratul Mahajan.</li>
-          <li><time datetime="2025">2025</time> Exploring 3D Gaussian Splatting rendering optimizations with Gilbert Bernstein.</li>
-        </ol>
       </section>
     </main>
 

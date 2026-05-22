@@ -9,13 +9,13 @@
   --wash-1: #9ab6ff;
   --wash-2: #d980a1;
   --wash-3: #cdd8f5;
-  --glass-1: #1f62d1;
-  --glass-2: #6d4ee8;
-  --glass-3: #c33fb1;
-  --glass-4: #df7a22;
-  --title-saturation: 0.8;
-  --title-contrast: 0.9;
-  --title-brightness: 1.2;
+  --glass-1: #2a55a8;
+  --glass-2: #6438ad;
+  --glass-3: #c11f3c;
+  --glass-4: #d4a83f;
+  --title-saturation: 1.05;
+  --title-contrast: 0.95;
+  --title-brightness: 1.12;
   --panel: #ffffff;
   --soft: #e8edf6;
   --code: #263247;
@@ -38,10 +38,10 @@
     --wash-1: #314842;
     --wash-2: #5b4937;
     --wash-3: #23302d;
-    --glass-1: #5fa8ff;
-    --glass-2: #a58dff;
-    --glass-3: #ff78da;
-    --glass-4: #ffb25c;
+    --glass-1: #6f93dd;
+    --glass-2: #9a7ce0;
+    --glass-3: #e35e72;
+    --glass-4: #e3c478;
     --panel: #171c1d;
     --soft: #23302d;
     --code: #e4f4ed;
@@ -62,10 +62,10 @@
   --wash-1: #9ab6ff;
   --wash-2: #d980a1;
   --wash-3: #cdd8f5;
-  --glass-1: #1f62d1;
-  --glass-2: #6d4ee8;
-  --glass-3: #c33fb1;
-  --glass-4: #df7a22;
+  --glass-1: #2a55a8;
+  --glass-2: #6438ad;
+  --glass-3: #c11f3c;
+  --glass-4: #d4a83f;
   --panel: #ffffff;
   --soft: #e8edf6;
   --code: #263247;
@@ -82,10 +82,10 @@
   --wash-1: #314842;
   --wash-2: #5b4937;
   --wash-3: #23302d;
-  --glass-1: #5fa8ff;
-  --glass-2: #a58dff;
-  --glass-3: #ff78da;
-  --glass-4: #ffb25c;
+  --glass-1: #6f93dd;
+  --glass-2: #9a7ce0;
+  --glass-3: #e35e72;
+  --glass-4: #e3c478;
   --panel: #171c1d;
   --soft: #23302d;
   --code: #e4f4ed;
@@ -321,7 +321,7 @@ main {
   isolation: isolate;
   min-height: 0;
   grid-template-columns: minmax(0, 1fr) 320px;
-  align-items: start;
+  align-items: center;
   padding-top: 58px;
   padding-bottom: 44px;
 }
@@ -494,7 +494,7 @@ h1 {
   /* Gradient lives here; the ink overlay (::before) wipes off at 5s to
      reveal it right-to-left, then the gradient drifts once and holds. */
   animation:
-    refracted-name 20s cubic-bezier(0.45, 0, 0.18, 1) infinite alternate,
+    refracted-name 16s cubic-bezier(0.45, 0, 0.18, 1) 6s 2 alternate forwards,
     rise-in 820ms cubic-bezier(0.45, 0, 0.18, 1) 40ms backwards;
 }
 
@@ -515,9 +515,9 @@ h1 {
   -webkit-mask-position: 0% 50%;
   mask-position: 0% 50%;
   pointer-events: none;
-  /* Negative delay trims the first black hold to ~10s; every later black
-     is the full ~30s. linear base timing; the dye segments ease themselves. */
-  animation: name-cycle 65s linear -20s infinite;
+  /* Solid ink for 6s, dye to color, hold ~30s, then settle back to ink.
+     One iteration; linear base timing (dye segments ease themselves). */
+  animation: name-reveal-settle 34.8s linear 6s 1 both;
 }
 
 #intro-title::after {
@@ -538,30 +538,26 @@ h1 {
   background-clip: text;
   mix-blend-mode: soft-light;
   pointer-events: none;
-  /* A single shine sweep just after the first color reveal, then vanishes. */
-  animation: glass-sheen-once 2.4s ease-in-out 13000ms 1 both;
+  /* A single shine sweep just after the color reveal, then vanishes. */
+  animation: glass-sheen-once 2.4s ease-in-out 8500ms 1 both;
 }
 
-/* One full period = 65s: black hold ~30s, dye to color ~2.6s, color hold
-   ~30s, wipe back to black ~2.6s. The ink overlay's mask drives it. */
-@keyframes name-cycle {
+/* One-shot over ~34.8s: dye to color (~2.4s), hold color ~30s, then wipe
+   back to ink and stay. Paired with a 6s start delay + both-fill on ::before
+   so the name reads as plain ink before and after. */
+@keyframes name-reveal-settle {
   0% {
-    -webkit-mask-position: 0% 50%;
-    mask-position: 0% 50%;
-  }
-
-  46% {
     -webkit-mask-position: 0% 50%;
     mask-position: 0% 50%;
     animation-timing-function: cubic-bezier(0.45, 0, 0.18, 1);
   }
 
-  50% {
+  6.9% {
     -webkit-mask-position: 100% 50%;
     mask-position: 100% 50%;
   }
 
-  96% {
+  93.1% {
     -webkit-mask-position: 100% 50%;
     mask-position: 100% 50%;
     animation-timing-function: cubic-bezier(0.45, 0, 0.18, 1);
@@ -639,11 +635,8 @@ h1 {
   .index-hero .profile-card {
     animation: none;
   }
-
-  /* No ink wipe; show the gradient name directly. */
-  #intro-title::before {
-    display: none;
-  }
+  /* With no animation the ink overlay stays at its default (full ink), so the
+     name shows as plain ink — the same calm resting state as everyone else. */
 }
 
 h2 {

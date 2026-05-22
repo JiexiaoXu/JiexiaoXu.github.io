@@ -3,7 +3,35 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% assign page_title = page.title | default: site.title %}
+    {% assign page_description = page.description | default: site.description %}
+    {% assign canonical_url = page.url | absolute_url %}
     <title>{% if page.title %}{{ page.title }} - {% endif %}{{ site.title }}</title>
+    <meta name="description" content="{{ page_description | strip_html | normalize_whitespace | escape }}">
+    <meta name="author" content="{{ site.author.name | default: site.title }}">
+    <link rel="canonical" href="{{ canonical_url }}">
+    <meta property="og:title" content="{{ page_title | escape }}">
+    <meta property="og:description" content="{{ page_description | strip_html | normalize_whitespace | escape }}">
+    <meta property="og:type" content="{% if page.layout == 'post' %}article{% else %}website{% endif %}">
+    <meta property="og:url" content="{{ canonical_url }}">
+    <meta property="og:site_name" content="{{ site.title }}">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="{{ page_title | escape }}">
+    <meta name="twitter:description" content="{{ page_description | strip_html | normalize_whitespace | escape }}">
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "{% if page.layout == 'post' %}BlogPosting{% else %}WebPage{% endif %}",
+        "headline": {{ page_title | jsonify }},
+        "description": {{ page_description | strip_html | normalize_whitespace | jsonify }},
+        "url": {{ canonical_url | jsonify }},
+        "author": {
+          "@type": "Person",
+          "name": {{ site.author.name | default: site.title | jsonify }},
+          "url": {{ site.url | jsonify }}
+        }
+      }
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Hanken+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">

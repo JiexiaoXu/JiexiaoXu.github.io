@@ -1,7 +1,10 @@
 title: "Jiexiao Xu"
-description: "Personal website and notes"
+description: "Jiexiao Xu is a computer systems researcher working on microservices, crash-consistency testing, and computer graphics."
 url: "https://jiexiaoxu.github.io"
 baseurl: ""
+author:
+  name: "Jiexiao Xu"
+  email: "jiexiao@cs.washington.edu"
 
 permalink: /blog/:year/:month/:day/:title/
 timezone: America/Los_Angeles

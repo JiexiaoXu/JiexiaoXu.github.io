@@ -20,6 +20,10 @@
   --panel: #ffffff;
   --soft: #e8edf6;
   --code: #263247;
+  --font-body: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-heading: Charter, "Bitstream Charter", Georgia, Cambria, "Times New Roman", serif;
+  --font-ui: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -101,7 +105,7 @@ body {
   margin: 0;
   background: var(--paper);
   color: var(--ink);
-  font-family: ui-serif, Georgia, Cambria, "Times New Roman", serif;
+  font-family: var(--font-body);
   line-height: 1.65;
 }
 
@@ -134,7 +138,7 @@ a:hover {
 
 .brand {
   color: var(--ink);
-  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-family: var(--font-ui);
   font-size: 0.95rem;
   font-weight: 700;
   letter-spacing: 0;
@@ -146,7 +150,7 @@ nav {
   flex-wrap: wrap;
   gap: 18px;
   justify-content: flex-end;
-  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-family: var(--font-ui);
   font-size: 0.9rem;
 }
 
@@ -168,7 +172,7 @@ nav a {
   background: var(--panel);
   color: var(--ink);
   cursor: pointer;
-  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-family: var(--font-ui);
   font-size: 0.82rem;
   font-weight: 700;
 }
@@ -218,7 +222,7 @@ main {
 .eyebrow {
   margin: 0 0 10px;
   color: var(--accent-2);
-  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-family: var(--font-ui);
   font-size: 0.78rem;
   font-weight: 700;
   letter-spacing: 0.08em;
@@ -230,6 +234,12 @@ h2,
 h3,
 p {
   margin-top: 0;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-heading);
 }
 
 h1 {
@@ -347,7 +357,7 @@ h3 {
   flex-wrap: wrap;
   gap: 14px;
   margin-top: 28px;
-  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-family: var(--font-ui);
 }
 
 .link-row a {
@@ -400,11 +410,11 @@ h3 {
 
 .interest-list {
   display: grid;
-  gap: 20px;
+  gap: 12px;
 }
 
 .interest-list article {
-  padding-top: 18px;
+  padding-top: 12px;
   border-top: 1px solid var(--rule);
 }
 
@@ -427,9 +437,9 @@ h3 {
 .work-item {
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
-  gap: 24px;
+  gap: 18px;
   align-items: start;
-  padding: 22px 0;
+  padding: 15px 0;
   border-top: 1px solid var(--rule);
 }
 
@@ -439,7 +449,7 @@ h3 {
 }
 
 .work-item a {
-  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-family: var(--font-ui);
   font-weight: 700;
 }
 
@@ -466,7 +476,7 @@ h3 {
 .article-list span,
 time {
   color: var(--muted);
-  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-family: var(--font-ui);
   font-size: 0.86rem;
 }
 
@@ -558,7 +568,7 @@ time {
 
 .construction-note {
   color: var(--muted);
-  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-family: var(--font-ui);
   font-size: 0.92rem;
 }
 
@@ -579,7 +589,7 @@ time {
 
 .back-link {
   color: var(--accent-2);
-  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-family: var(--font-ui);
   font-size: 0.82rem;
   font-weight: 700;
   letter-spacing: 0.08em;
@@ -617,7 +627,7 @@ time {
 
 .post-content code {
   color: var(--code);
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+  font-family: var(--font-mono);
   font-size: 0.92em;
 }
 
@@ -629,7 +639,7 @@ footer {
   justify-content: space-between;
   gap: 20px;
   color: var(--muted);
-  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-family: var(--font-ui);
   font-size: 0.88rem;
 }
 

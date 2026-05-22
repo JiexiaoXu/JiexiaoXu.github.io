@@ -170,7 +170,7 @@ footer a:focus-visible {
 }
 
 .site-header {
-  max-width: 1120px;
+  max-width: 1000px;
   margin: 0 auto;
   padding: 28px 28px 18px;
   display: flex;
@@ -245,26 +245,16 @@ nav a {
 }
 
 main {
-  max-width: 1120px;
+  max-width: 1000px;
   margin: 0 auto;
   padding: 0 28px 44px;
-  counter-reset: section;
-}
-
-/* Editorial section markers: 01 — EDUCATION, 02 — RECENT, ... */
-.content-split > div:first-child > h2::before,
-.news-band > h2::before {
-  counter-increment: section;
-  content: counter(section, decimal-leading-zero) "  \2014  ";
-  color: var(--accent-2);
-  font-variant-numeric: tabular-nums;
 }
 
 .hero {
   min-height: 520px;
   display: grid;
   grid-template-columns: minmax(0, 1fr) 320px;
-  gap: 56px;
+  gap: 40px;
   align-items: center;
   padding: 72px 0 56px;
   border-bottom: 1px solid var(--rule);
@@ -528,7 +518,7 @@ h2 {
   color: var(--muted);
   font-family: var(--font-ui);
   font-weight: 700;
-  margin-bottom: 18px;
+  margin-bottom: 22px;
   font-size: clamp(0.98rem, 1.8vw, 1.22rem);
   line-height: 1.1;
   letter-spacing: 0.08em;
@@ -625,9 +615,7 @@ h3 {
 }
 
 .content-split {
-  display: grid;
-  grid-template-columns: 200px minmax(0, 1fr);
-  gap: 32px;
+  display: block;
 }
 
 #education {
@@ -671,6 +659,14 @@ h3 {
   font-family: var(--font-ui);
   font-size: 0.98rem;
   font-weight: 700;
+}
+
+.education-item .school-upenn {
+  color: #990000;
+}
+
+.education-item .school-uw {
+  color: #4b2e83;
 }
 
 .work-item {
@@ -790,9 +786,7 @@ time {
 }
 
 .news-band {
-  display: grid;
-  grid-template-columns: 200px minmax(0, 1fr);
-  gap: 32px;
+  display: block;
 }
 
 .news-band ol {
@@ -821,14 +815,12 @@ time {
 }
 
 .blog-index {
-  display: grid;
-  grid-template-columns: 200px minmax(0, 1fr);
-  gap: 32px;
+  display: block;
   padding: 72px 0 64px;
 }
 
 .blog-index h1 {
-  margin-bottom: 0;
+  margin-bottom: 16px;
 }
 
 .post-list {
@@ -932,7 +924,7 @@ time {
 }
 
 footer {
-  max-width: 1120px;
+  max-width: 1000px;
   margin: 0 auto;
   padding: 28px;
   display: flex;

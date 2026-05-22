@@ -19,6 +19,10 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Spectral:ital,wght@0,400;0,500;0,600;1,400&family=Hanken+Grotesk:wght@500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
+    <link rel="alternate icon" href="/favicon.ico" sizes="16x16 32x32 48x48">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -109,12 +113,18 @@
 
         <aside class="profile-card" aria-label="Profile and current work">
           <figure class="profile-photo">
-            <img class="profile-img profile-img--day" src="profile_pike.jpg"
-                 alt="Portrait of Jiexiao Xu" width="800" height="600"
-                 loading="eager" decoding="async" fetchpriority="high">
-            <img class="profile-img profile-img--night" src="jiexiao_drink.jpg"
-                 alt="" aria-hidden="true" width="800" height="600"
-                 loading="eager" decoding="async">
+            <picture>
+              <source srcset="assets/profile-day.webp" type="image/webp">
+              <img class="profile-img profile-img--day" src="assets/profile-day.jpg"
+                   alt="Portrait of Jiexiao Xu" width="1200" height="900"
+                   loading="eager" decoding="async" fetchpriority="high">
+            </picture>
+            <picture>
+              <source srcset="assets/profile-night.webp" type="image/webp">
+              <img class="profile-img profile-img--night" src="assets/profile-night.jpg"
+                   alt="" aria-hidden="true" width="900" height="1200"
+                   loading="eager" decoding="async">
+            </picture>
           </figure>
 
           <div class="current-panel">

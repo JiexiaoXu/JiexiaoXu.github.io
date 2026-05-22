@@ -515,13 +515,13 @@ h1 {
 }
 
 h2 {
-  color: var(--muted);
+  color: color-mix(in srgb, var(--ink) 62%, var(--muted));
   font-family: var(--font-ui);
   font-weight: 700;
   margin-bottom: 22px;
   font-size: clamp(0.98rem, 1.8vw, 1.22rem);
   line-height: 1.1;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
 }
 
@@ -604,8 +604,19 @@ h3 {
 
 .content-split,
 .news-band {
-  padding: 46px 0;
+  position: relative;
+  padding: 48px 0 46px;
   border-bottom: 1px solid var(--rule);
+}
+
+.content-split::before,
+.news-band::before {
+  content: "";
+  display: block;
+  width: 42px;
+  height: 2px;
+  margin-bottom: 20px;
+  background: color-mix(in srgb, var(--accent-2) 58%, var(--rule));
 }
 
 .education-item p,
@@ -662,11 +673,11 @@ h3 {
 }
 
 .education-item .school-upenn {
-  color: #990000;
+  color: #7a1f24;
 }
 
 .education-item .school-uw {
-  color: #4b2e83;
+  color: #51406f;
 }
 
 .work-item {

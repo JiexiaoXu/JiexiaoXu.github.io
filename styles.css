@@ -19,10 +19,12 @@
   --panel: #ffffff;
   --soft: #e8edf6;
   --code: #263247;
-  --font-body: "Spectral", Charter, Georgia, Cambria, serif;
-  --font-heading: "Fraunces", Charter, Georgia, serif;
+  --font-body: "Newsreader", Georgia, Cambria, serif;
+  --font-heading: "Newsreader", Georgia, Cambria, serif;
+  --font-name: "Newsreader", Georgia, Cambria, serif;
   --font-ui: "Hanken Grotesk", ui-sans-serif, system-ui, sans-serif;
   --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+  --name-weight: 700;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -102,6 +104,7 @@ body {
   background: var(--paper);
   color: var(--ink);
   font-family: var(--font-body);
+  font-optical-sizing: auto;
   font-size: 1.02rem;
   line-height: 1.72;
   -webkit-font-smoothing: antialiased;
@@ -271,7 +274,7 @@ main {
   position: relative;
   isolation: isolate;
   min-height: 0;
-  grid-template-columns: minmax(0, 1fr) 360px;
+  grid-template-columns: minmax(0, 1fr) 320px;
   align-items: start;
   padding-top: 58px;
   padding-bottom: 44px;
@@ -279,17 +282,17 @@ main {
 
 .profile-card {
   overflow: hidden;
-  border: 1px solid color-mix(in srgb, var(--rule) 80%, transparent);
-  border-radius: 14px;
-  background: color-mix(in srgb, var(--panel) 78%, transparent);
-  box-shadow: 0 16px 38px -24px color-mix(in srgb, var(--ink) 66%, transparent);
+  border: 1px solid var(--rule);
+  border-radius: 0;
+  background: color-mix(in srgb, var(--panel) 64%, transparent);
+  box-shadow: none;
 }
 
 .profile-photo {
   position: relative;
   margin: 0;
   width: 100%;
-  aspect-ratio: 4 / 5;
+  aspect-ratio: 6 / 5;
   overflow: hidden;
   background: var(--soft);
 }
@@ -324,14 +327,14 @@ main {
   will-change: opacity, transform;
 }
 
-/* Focal points: the day shot is landscape (frame the subject, not the
-   street); the night shot is portrait and now barely cropped at 4:5. */
+/* Focal points: the day shot is landscape; the night shot is portrait and
+   needs a higher focal point to keep the face visible in the shorter frame. */
 .profile-img--day {
   object-position: 36% 42%;
 }
 
 .profile-img--night {
-  object-position: center 40%;
+  object-position: center 24%;
 }
 
 /* Light mode (default): day photo in focus, night photo waiting. */
@@ -418,10 +421,10 @@ h1 {
   position: relative;
   display: inline-block;
   color: transparent;
-  font-family: Charter, "Bitstream Charter", Georgia, Cambria, "Times New Roman", serif;
-  font-weight: 800;
+  font-family: var(--font-name);
+  font-weight: var(--name-weight);
   background:
-    linear-gradient(104deg,
+    linear-gradient(104deg in oklab,
       var(--glass-1) 0%,
       var(--glass-2) 20%,
       var(--glass-3) 40%,
@@ -437,7 +440,7 @@ h1 {
   background-clip: text;
   filter: saturate(var(--title-saturation)) contrast(var(--title-contrast)) brightness(var(--title-brightness));
   animation:
-    refracted-name 10s cubic-bezier(0.45, 0, 0.18, 1) infinite alternate,
+    refracted-name 16s cubic-bezier(0.45, 0, 0.18, 1) infinite alternate,
     rise-in 820ms cubic-bezier(0.45, 0, 0.18, 1) 40ms backwards;
 }
 
@@ -447,7 +450,7 @@ h1 {
   inset: 0;
   color: transparent;
   background:
-    linear-gradient(100deg,
+    linear-gradient(100deg in oklab,
       transparent 0%,
       color-mix(in srgb, var(--panel) 86%, transparent) 22%,
       transparent 38%,
@@ -459,7 +462,7 @@ h1 {
   background-clip: text;
   mix-blend-mode: soft-light;
   pointer-events: none;
-  animation: glass-sheen 4.5s ease-in-out infinite alternate;
+  animation: glass-sheen 9s ease-in-out infinite alternate;
 }
 
 @keyframes refracted-name {
@@ -524,7 +527,7 @@ h1 {
 h2 {
   color: var(--muted);
   font-family: var(--font-ui);
-  font-weight: 800;
+  font-weight: 700;
   margin-bottom: 18px;
   font-size: clamp(0.98rem, 1.8vw, 1.22rem);
   line-height: 1.1;
@@ -569,7 +572,7 @@ h3 {
   border-bottom: 2px solid var(--rule);
   color: var(--ink);
   text-decoration: none;
-  font-weight: 650;
+  font-weight: 700;
 }
 
 .link-row a:hover {
@@ -577,7 +580,7 @@ h3 {
 }
 
 .current-panel {
-  padding: 18px 22px 20px;
+  padding: 15px 18px 17px;
 }
 
 .current-panel ul {
@@ -623,8 +626,8 @@ h3 {
 
 .content-split {
   display: grid;
-  grid-template-columns: 260px minmax(0, 1fr);
-  gap: 48px;
+  grid-template-columns: 200px minmax(0, 1fr);
+  gap: 32px;
 }
 
 #education {
@@ -667,7 +670,7 @@ h3 {
   margin-bottom: 2px;
   font-family: var(--font-ui);
   font-size: 0.98rem;
-  font-weight: 750;
+  font-weight: 700;
 }
 
 .work-item {
@@ -782,14 +785,14 @@ time {
   color: var(--accent);
   font-family: var(--font-ui);
   font-size: 0.84rem;
-  font-weight: 750;
+  font-weight: 700;
   text-decoration: none;
 }
 
 .news-band {
   display: grid;
-  grid-template-columns: 260px minmax(0, 1fr);
-  gap: 48px;
+  grid-template-columns: 200px minmax(0, 1fr);
+  gap: 32px;
 }
 
 .news-band ol {
@@ -819,8 +822,8 @@ time {
 
 .blog-index {
   display: grid;
-  grid-template-columns: 260px minmax(0, 1fr);
-  gap: 48px;
+  grid-template-columns: 200px minmax(0, 1fr);
+  gap: 32px;
   padding: 72px 0 64px;
 }
 
@@ -975,7 +978,7 @@ footer p {
   }
 
   .profile-card {
-    max-width: 360px;
+    max-width: 320px;
   }
 }
 

@@ -1,6 +1,6 @@
 :root {
   color-scheme: light dark;
-  --paper: #fbfbf7;
+  --paper: #fffefd;
   --ink: #161717;
   --muted: #60676a;
   --rule: #d9dddc;
@@ -51,7 +51,7 @@
 }
 
 :root[data-palette="indigo"] {
-  --paper: #fbfbf7;
+  --paper: #fffefd;
   --ink: #161717;
   --muted: #60676a;
   --rule: #d9dddc;

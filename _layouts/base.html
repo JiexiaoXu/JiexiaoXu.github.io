@@ -15,9 +15,11 @@
     <meta property="og:type" content="{% if page.layout == 'post' %}article{% else %}website{% endif %}">
     <meta property="og:url" content="{{ canonical_url }}">
     <meta property="og:site_name" content="{{ site.title }}">
-    <meta name="twitter:card" content="summary">
+    <meta property="og:image" content="{{ page.image | default: '/assets/profile-day.jpg' | absolute_url }}">
+    <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="{{ page_title | escape }}">
     <meta name="twitter:description" content="{{ page_description | strip_html | normalize_whitespace | escape }}">
+    <meta name="twitter:image" content="{{ page.image | default: '/assets/profile-day.jpg' | absolute_url }}">
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -36,19 +38,17 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,700;1,6..72,400&family=Hanken+Grotesk:wght@500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ '/styles.css' | relative_url }}?v=20260522-newsreader">
-    <link rel="icon" href="{{ '/favicon.svg?v=2' | relative_url }}" type="image/svg+xml">
-    <link rel="icon" href="{{ '/favicon-32.png?v=2' | relative_url }}" sizes="32x32" type="image/png">
-    <link rel="alternate icon" href="{{ '/favicon.ico?v=2' | relative_url }}" sizes="16x16 32x32 48x48">
-    <link rel="apple-touch-icon" href="{{ '/apple-touch-icon.png?v=2' | relative_url }}">
+    <link rel="icon" href="{{ '/favicon.svg?v=3' | relative_url }}" type="image/svg+xml">
+    <link rel="icon" href="{{ '/favicon-32.png?v=3' | relative_url }}" sizes="32x32" type="image/png">
+    <link rel="alternate icon" href="{{ '/favicon.ico?v=3' | relative_url }}" sizes="16x16 32x32 48x48">
+    <link rel="apple-touch-icon" href="{{ '/apple-touch-icon.png?v=3' | relative_url }}">
   </head>
   <body>
     <header class="site-header">
       <a class="brand" href="{{ '/' | relative_url }}">Jiexiao Xu 徐捷骁</a>
       <div class="header-tools">
         <nav aria-label="Primary navigation">
-          <a href="{{ '/' | relative_url }}#education">Education</a>
-          <a href="{{ '/' | relative_url }}#projects">Projects</a>
-          <a href="{{ '/' | relative_url }}#publications">Publications</a>
+          <a href="{{ '/' | relative_url }}">Home</a>
         </nav>
         <button class="mode-toggle" type="button" aria-label="Switch color theme" aria-pressed="false">
           <span class="mode-icon" aria-hidden="true"></span>
@@ -63,7 +63,7 @@
 
     <footer id="contact">
       <p>Email: jiexiao@cs.washington.edu</p>
-      <p><a href="{{ '/blog/' | relative_url }}">Blog</a> · in construction</p>
+      <p>&copy; 2026 Jiexiao Xu</p>
     </footer>
     <script>
       const modeButton = document.querySelector(".mode-toggle");

@@ -12,17 +12,20 @@
     <meta property="og:type" content="profile">
     <meta property="og:url" content="https://jiexiaoxu.github.io/">
     <meta property="og:site_name" content="Jiexiao Xu">
-    <meta name="twitter:card" content="summary">
+    <meta property="og:image" content="https://jiexiaoxu.github.io/assets/profile-day.jpg">
+    <meta property="og:image:alt" content="Portrait of Jiexiao Xu">
+    <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Jiexiao Xu">
     <meta name="twitter:description" content="Computer systems researcher working on microservices, crash-consistency testing, and computer graphics.">
+    <meta name="twitter:image" content="https://jiexiaoxu.github.io/assets/profile-day.jpg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,700;1,6..72,400&family=Hanken+Grotesk:wght@500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css?v=20260522-newsreader">
-    <link rel="icon" href="/favicon.svg?v=2" type="image/svg+xml">
-    <link rel="icon" href="/favicon-32.png?v=2" sizes="32x32" type="image/png">
-    <link rel="alternate icon" href="/favicon.ico?v=2" sizes="16x16 32x32 48x48">
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=2">
+    <link rel="icon" href="/favicon.svg?v=3" type="image/svg+xml">
+    <link rel="icon" href="/favicon-32.png?v=3" sizes="32x32" type="image/png">
+    <link rel="alternate icon" href="/favicon.ico?v=3" sizes="16x16 32x32 48x48">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=3">
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -67,9 +70,7 @@
       <a class="brand" href="#">Jiexiao Xu 徐捷骁</a>
       <div class="header-tools">
         <nav aria-label="Primary navigation">
-          <a href="#education">Education</a>
-          <a href="#projects">Projects</a>
-          <a href="#publications">Publications</a>
+          <a href="/" aria-current="page">Home</a>
         </nav>
         <button class="mode-toggle" type="button" aria-label="Switch color theme" aria-pressed="false">
           <span class="mode-icon" aria-hidden="true"></span>
@@ -83,14 +84,15 @@
         <div class="intro-copy">
           <h1 id="intro-title" data-text="Jiexiao Xu">Jiexiao Xu</h1>
           <p class="lead">
-            I am a combined B.S./M.S. student in Computer Science at the University
-            of Washington and an incoming Ph.D. student at the University of
-            Pennsylvania, broadly interested in computer systems and graphics.
+            I study computer systems. My current work asks how microservices
+            can hold their end-to-end latency targets (SLOs) when a cluster is
+            pushed past its capacity.
           </p>
           <p>
-            My current work studies SLO-aware microservice scheduling under
-            overload. I have also worked on crash-consistency testing and
-            rendering-pipeline optimizations for 3D Gaussian Splatting.
+            My research reaches across systems and graphics: I have built
+            scalable, accurate crash-consistency testing for storage
+            applications and optimized rendering pipelines for 3D Gaussian
+            Splatting.
           </p>
           <p>
             I have collaborated with <a href="https://vic-li.me/">Shihang Li</a>,
@@ -102,6 +104,7 @@
           </p>
           <div class="link-row" aria-label="Profile links">
             <a href="mailto:jiexiao@cs.washington.edu">Email</a>
+            <a href="https://dblp.org/pid/401/6060.html">DBLP</a>
             <a href="https://github.com/JiexiaoXu">GitHub</a>
             <a href="https://www.linkedin.com/in/jiexiao-xu-713039370/">LinkedIn</a>
             <a href="assets/jiexiao-xu-resume.pdf">Resume</a>
@@ -160,58 +163,56 @@
       <section class="news-band" aria-labelledby="news-title">
         <h2 id="news-title">News</h2>
         <ol>
-          <li><time datetime="2026-09">Sep 2026</time><span>Starting a Ph.D. at the University of Pennsylvania with Professors <a href="https://joshfried.io/">Josh Fried</a> and <a href="https://vincen.tl/">Vincent Liu</a>.</span></li>
+          <li><time datetime="2026-09">Sep 2026</time><span>Starting a Ph.D. in Computer and Information Science at the University of Pennsylvania.</span></li>
           <li><time datetime="2025-10">Oct 2025</time><span>Paper accepted to OOPSLA 2025 on application-level crash-consistency testing.</span></li>
           <li><time datetime="2025-06">Jun 2025</time><span>Working on SLO-aware scheduling in microservices with <a href="https://vic-li.me/">Shihang Li</a>, <a href="https://homes.cs.washington.edu/~simpeter/">Simon Peter</a>, and <a href="https://ratul.org/">Ratul Mahajan</a>.</span></li>
-          <li><time datetime="2025-03">Sep 2024</time><span>Exploring 3D Gaussian Splatting rendering optimizations with <a href="http://www.gilbertbernstein.com/">Gilbert Bernstein</a>.</span></li>
+          <li><time datetime="2024-09">Sep 2024</time><span>Exploring 3D Gaussian Splatting rendering optimizations with <a href="http://www.gilbertbernstein.com/">Gilbert Bernstein</a>.</span></li>
         </ol>
       </section>
 
-      <section class="content-split" id="projects" aria-labelledby="projects-title">
+      <section class="content-split" id="research" aria-labelledby="research-title">
         <div>
-          <h2 id="projects-title">Projects</h2>
+          <h2 id="research-title">Research</h2>
         </div>
-        <div class="item-stack">
-          <article class="work-item">
-            <div>
-              <h3>SLO-aware microservice scheduling</h3>
-              <p>Schedulers that use end-to-end deadlines and downstream workload estimation to improve goodput under overload.</p>
+        <div class="research-list">
+          <article class="research-item">
+            <div class="research-meta">
+              <span class="research-venue">In progress</span>
+              <span class="research-year">2025&ndash;</span>
             </div>
-            <a href="https://github.com/vic-lsh/masa">Code</a>
-          </article>
-          <article class="work-item">
-            <div>
-              <h3>Representative crash-consistency testing</h3>
-              <p>A framework for grouping similar crash states to make application-level crash-consistency testing scalable and accurate.</p>
-            </div>
-            <a href="https://dl.acm.org/doi/abs/10.1145/3720431">Paper</a>
-          </article>
-          <article class="work-item">
-            <div>
-              <h3>3D Gaussian Splatting rendering</h3>
-              <p>Optimizations to reduce sorting overhead and improve runtime and memory usage for real-time 3D reconstruction.</p>
+            <div class="research-detail">
+              <h3 class="research-title-line">SLO-aware microservice scheduling</h3>
+              <p class="research-desc">When a cluster runs past capacity, microservice chains miss their end-to-end latency targets because each local scheduler is blind to downstream demand. I am building schedulers that propagate end-to-end deadlines and estimate downstream work, so the system sheds and prioritizes requests intelligently &mdash; raising the goodput an overloaded deployment can sustain within its SLO.</p>
+              <div class="research-actions">
+                <a class="paper-action" href="https://github.com/vic-lsh/masa">Code &#8599;</a>
+              </div>
             </div>
           </article>
-        </div>
-      </section>
 
-      <section class="content-split" id="publications" aria-labelledby="publications-title">
-        <div>
-          <h2 id="publications-title">Publications</h2>
-        </div>
-        <div class="article-list">
-          <article class="publication-item">
-            <div class="pub-meta">
-              <span class="pub-venue">OOPSLA</span>
-              <span class="pub-year">2025</span>
+          <article class="research-item">
+            <div class="research-meta">
+              <span class="research-venue">OOPSLA</span>
+              <span class="research-year">2025</span>
             </div>
-            <div class="publication-detail">
-              <span class="pub-title">Scalable and Accurate Application-level Crash-Consistency Testing via Representative Testing</span>
-              <p class="pub-authors"><a href="https://ikace.github.io/">Yile Gu</a>*, Ian Neal*, <strong>Jiexiao Xu</strong>, Shaun Christopher Lee, Ayman Said, Musa Haydar, Jacob Van Geffen, Rohan Kadekodi, Andree Quinn, <a href="https://homes.cs.washington.edu/~baris/">Baris Kasikci</a></p>
-              <div class="pub-actions">
-                <a class="paper-action" href="https://dl.acm.org/doi/abs/10.1145/3720431">Paper ↗</a>
+            <div class="research-detail">
+              <h3 class="research-title-line">Scalable and accurate crash-consistency testing</h3>
+              <p class="research-desc">Application-level crash-consistency testing blows up combinatorially: the number of crash states to check grows faster than any tool can keep up with. We cluster behaviorally similar crash states and test one representative per group, which makes testing tractable on real storage applications while still surfacing the consistency bugs an exhaustive search would find.</p>
+              <p class="research-authors"><a href="https://ikace.github.io/">Yile Gu</a>*, Ian Neal*, <strong>Jiexiao Xu</strong>, Shaun Christopher Lee, Ayman Said, Musa Haydar, Jacob Van Geffen, Rohan Kadekodi, Andree Quinn, <a href="https://homes.cs.washington.edu/~baris/">Baris Kasikci</a></p>
+              <div class="research-actions">
+                <a class="paper-action" href="https://dl.acm.org/doi/abs/10.1145/3720431">Paper &#8599;</a>
                 <span class="pub-doi">doi:10.1145/3720431</span>
               </div>
+            </div>
+          </article>
+
+          <article class="research-item">
+            <div class="research-meta">
+              <span class="research-venue">Project</span>
+              <span class="research-year">2024</span>
+            </div>
+            <div class="research-detail">
+              <h3 class="research-title-line">Faster 3D Gaussian Splatting rendering</h3>
+              <p class="research-desc">Real-time 3D Gaussian Splatting spends much of its per-frame budget sorting splats by depth. I explored rendering-pipeline optimizations that cut this sorting overhead, reducing runtime and memory use for real-time 3D reconstruction.</p>
             </div>
           </article>
         </div>
@@ -220,7 +221,7 @@
 
     <footer id="contact">
       <p>Email: jiexiao@cs.washington.edu</p>
-      <p><a href="blog/">Blog</a> · in construction</p>
+      <p>&copy; 2026 Jiexiao Xu</p>
     </footer>
     <script>
       const modeButton = document.querySelector(".mode-toggle");

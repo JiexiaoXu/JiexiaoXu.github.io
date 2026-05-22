@@ -186,7 +186,7 @@ footer a:focus-visible {
 .brand {
   color: var(--ink);
   font-family: var(--font-ui);
-  font-size: 0.95rem;
+  font-size: 0.92rem;
   font-weight: 700;
   letter-spacing: 0;
   text-decoration: none;
@@ -198,7 +198,7 @@ nav {
   gap: 18px;
   justify-content: flex-end;
   font-family: var(--font-ui);
-  font-size: 0.9rem;
+  font-size: 0.92rem;
 }
 
 nav a {
@@ -220,7 +220,7 @@ nav a {
   color: var(--ink);
   cursor: pointer;
   font-family: var(--font-ui);
-  font-size: 0.82rem;
+  font-size: 0.84rem;
   font-weight: 700;
 }
 
@@ -387,7 +387,7 @@ main {
   margin: 0 0 10px;
   color: var(--accent-2);
   font-family: var(--font-ui);
-  font-size: 0.78rem;
+  font-size: 0.84rem;
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -659,7 +659,7 @@ h3 {
 .education-date {
   color: var(--muted);
   font-family: var(--font-ui);
-  font-size: 0.86rem;
+  font-size: 0.84rem;
   white-space: nowrap;
 }
 
@@ -712,7 +712,7 @@ h3 {
 time {
   color: var(--muted);
   font-family: var(--font-ui);
-  font-size: 0.86rem;
+  font-size: 0.84rem;
 }
 
 .article-list strong {
@@ -734,7 +734,7 @@ time {
   width: fit-content;
   color: var(--accent);
   font-family: var(--font-ui);
-  font-size: 0.86rem;
+  font-size: 0.84rem;
   font-weight: 750;
   text-decoration: none;
 }
@@ -840,7 +840,7 @@ time {
 .back-link {
   color: var(--accent-2);
   font-family: var(--font-ui);
-  font-size: 0.82rem;
+  font-size: 0.84rem;
   font-weight: 700;
   letter-spacing: 0.08em;
   text-decoration: none;
@@ -890,7 +890,7 @@ footer {
   gap: 20px;
   color: var(--muted);
   font-family: var(--font-ui);
-  font-size: 0.88rem;
+  font-size: 0.84rem;
 }
 
 footer p {

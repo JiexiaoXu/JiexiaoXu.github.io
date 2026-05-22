@@ -6,7 +6,12 @@ layout: base
   <header class="post-header">
     <a class="back-link" href="{{ '/blog/' | relative_url }}">Blog</a>
     <h1>{{ page.title }}</h1>
-    <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B %-d, %Y" }}</time>
+    <div class="post-meta-row">
+      <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B %-d, %Y" }}</time>
+      {% if page.status %}
+        <span class="post-status">{{ page.status }}</span>
+      {% endif %}
+    </div>
   </header>
 
   <div class="post-content">

@@ -997,6 +997,17 @@ time {
   color: var(--muted);
 }
 
+.post-status {
+  display: inline-block;
+  margin-left: 10px;
+  color: var(--accent-2);
+  font-family: var(--font-ui);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
 .construction-note {
   color: var(--muted);
   font-family: var(--font-ui);
@@ -1016,6 +1027,17 @@ time {
 .post-header h1 {
   margin: 12px 0 14px;
   font-size: clamp(2.2rem, 6vw, 4.2rem);
+}
+
+.post-meta-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
+
+.post-meta-row .post-status {
+  margin-left: 0;
 }
 
 .back-link {

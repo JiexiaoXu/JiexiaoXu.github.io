@@ -37,7 +37,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,700;1,6..72,400&family=Hanken+Grotesk:wght@500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{{ '/styles.css' | relative_url }}?v=20260522-newsreader">
+    <link rel="stylesheet" href="{{ '/styles.css' | relative_url }}?v=20260522-writing-home">
     <link rel="icon" href="{{ '/favicon.svg?v=3' | relative_url }}" type="image/svg+xml">
     <link rel="icon" href="{{ '/favicon-32.png?v=3' | relative_url }}" sizes="32x32" type="image/png">
     <link rel="alternate icon" href="{{ '/favicon.ico?v=3' | relative_url }}" sizes="16x16 32x32 48x48">
@@ -49,6 +49,7 @@
       <div class="header-tools">
         <nav aria-label="Primary navigation">
           <a href="{{ '/' | relative_url }}">Home</a>
+          <a href="{{ '/blog/' | relative_url }}"{% if page.url contains '/blog/' %} aria-current="page"{% endif %}>Writing</a>
         </nav>
         <button class="mode-toggle" type="button" aria-label="Switch color theme" aria-pressed="false">
           <span class="mode-icon" aria-hidden="true"></span>

@@ -380,7 +380,7 @@ main {
 }
 
 .profile-img--night {
-  object-position: center 24%;
+  object-position: center 20%;
 }
 
 /* Light mode (default): day photo in focus, night photo waiting. */
@@ -922,6 +922,78 @@ time {
   flex-wrap: wrap;
   gap: 18px;
   margin-top: 2px;
+}
+
+.writing-preview {
+  padding-top: 42px;
+}
+
+.gradient-section-link {
+  display: inline-block;
+  color: transparent;
+  background:
+    linear-gradient(104deg in oklab,
+      var(--glass-1) 0%,
+      var(--glass-2) 24%,
+      var(--glass-3) 48%,
+      var(--glass-4) 72%,
+      var(--glass-1) 100%);
+  background-size: 220% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  text-decoration: none;
+  animation: refracted-name 18s linear infinite;
+}
+
+.gradient-section-link:hover,
+.gradient-section-link:focus-visible {
+  background-position: 100% 50%;
+  outline: none;
+}
+
+.gradient-section-link::after {
+  content: " \2192";
+  color: var(--accent);
+  -webkit-text-fill-color: var(--accent);
+}
+
+.writing-preview-item {
+  max-width: 680px;
+  padding-top: 0;
+}
+
+.writing-preview-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.writing-preview-meta .post-status {
+  margin-left: 0;
+}
+
+.writing-preview-item h3 {
+  margin: 0 0 8px;
+  font-size: 1.24rem;
+}
+
+.writing-preview-item h3 a {
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.writing-preview-item h3 a:hover,
+.writing-preview-item h3 a:focus-visible {
+  color: var(--accent);
+}
+
+.writing-preview-item p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 1rem;
+  line-height: 1.62;
 }
 
 .news-band {

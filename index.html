@@ -1,3 +1,5 @@
+---
+---
 <!doctype html>
 <html lang="en">
   <head>
@@ -21,7 +23,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,700;1,6..72,400&family=Hanken+Grotesk:wght@500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css?v=20260522-newsreader">
+    <link rel="stylesheet" href="styles.css?v=20260522-writing-home">
     <link rel="icon" href="/favicon.svg?v=3" type="image/svg+xml">
     <link rel="icon" href="/favicon-32.png?v=3" sizes="32x32" type="image/png">
     <link rel="alternate icon" href="/favicon.ico?v=3" sizes="16x16 32x32 48x48">
@@ -71,6 +73,7 @@
       <div class="header-tools">
         <nav aria-label="Primary navigation">
           <a href="/" aria-current="page">Home</a>
+          <a href="/blog/">Writing</a>
         </nav>
         <button class="mode-toggle" type="button" aria-label="Switch color theme" aria-pressed="false">
           <span class="mode-icon" aria-hidden="true"></span>
@@ -217,6 +220,29 @@
           </article>
         </div>
       </section>
+
+      {% assign latest_post = site.posts | first %}
+      {% if latest_post %}
+      <section class="content-split writing-preview" id="writing" aria-labelledby="writing-title">
+        <div>
+          <h2 id="writing-title">
+            <a class="gradient-section-link" href="{{ '/blog/' | relative_url }}">Writing</a>
+          </h2>
+        </div>
+        <article class="writing-preview-item">
+          <div class="writing-preview-meta">
+            <time datetime="{{ latest_post.date | date_to_xmlschema }}">{{ latest_post.date | date: "%B %-d, %Y" }}</time>
+            {% if latest_post.status %}
+              <span class="post-status">{{ latest_post.status }}</span>
+            {% endif %}
+          </div>
+          <h3><a href="{{ latest_post.url | relative_url }}">{{ latest_post.title }}</a></h3>
+          {% if latest_post.excerpt %}
+            <p>{{ latest_post.excerpt | strip_html | truncate: 190 }}</p>
+          {% endif %}
+        </article>
+      </section>
+      {% endif %}
     </main>
 
     <footer id="contact">

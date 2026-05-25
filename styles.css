@@ -1137,6 +1137,12 @@ time {
   gap: 10px;
 }
 
+.post-meta-detail {
+  color: var(--muted);
+  font-family: var(--font-ui);
+  font-size: 0.84rem;
+}
+
 .post-meta-row .post-status {
   margin-left: 0;
 }
@@ -1154,16 +1160,28 @@ time {
 .post-content {
   padding-top: 34px;
   font-size: 1.05rem;
+  line-height: 1.72;
 }
 
 .post-content h2,
 .post-content h3 {
   margin-top: 2em;
+  margin-bottom: 0.65em;
 }
 
 .post-content p,
 .post-content li {
   color: color-mix(in srgb, var(--ink) 84%, var(--muted));
+}
+
+.post-content p {
+  margin-bottom: 1.05em;
+}
+
+.post-content ol,
+.post-content ul {
+  margin-top: 0.5em;
+  margin-bottom: 1.15em;
 }
 
 .post-content img {
@@ -1192,6 +1210,23 @@ time {
   max-width: 100%;
   height: auto;
   margin: 0 auto;
+}
+
+.post-content .mermaid svg,
+.post-content .mermaid .nodeLabel,
+.post-content .mermaid .edgeLabel,
+.post-content .mermaid .label {
+  color: var(--ink) !important;
+}
+
+.post-content .mermaid svg text,
+.post-content .mermaid svg tspan {
+  fill: var(--ink) !important;
+}
+
+.post-content .mermaid .edgeLabel,
+.post-content .mermaid .edgeLabel p {
+  background: var(--paper) !important;
 }
 
 .post-content code {

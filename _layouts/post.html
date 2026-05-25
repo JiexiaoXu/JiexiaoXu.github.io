@@ -6,8 +6,12 @@ layout: base
   <header class="post-header">
     <a class="back-link" href="{{ '/blog/' | relative_url }}">Blog</a>
     <h1>{{ page.title }}</h1>
+    {% assign word_count = content | strip_html | number_of_words %}
+    {% assign reading_minutes = word_count | divided_by: 220.0 | ceil %}
     <div class="post-meta-row">
       <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B %-d, %Y" }}</time>
+      <span class="post-meta-detail">{{ word_count }} words</span>
+      <span class="post-meta-detail">{{ reading_minutes }} min read</span>
       {% if page.status %}
         <span class="post-status">{{ page.status }}</span>
       {% endif %}

@@ -54,8 +54,8 @@ flowchart LR
   IDLE -. "steal" .-> SQ
   IDLE -. "IPI" .-> TCP
 
-  classDef step fill:transparent,stroke:#9aa0a6,stroke-width:1px,color:#161717;
-  classDef entry fill:transparent,stroke:#9b3d51,stroke-width:1.4px,color:#9b3d51;
+  classDef step fill:transparent,stroke:#9aa0a6,stroke-width:1px;
+  classDef entry fill:transparent,stroke:#9b3d51,stroke-width:1.4px;
   class ENTRY entry;
   class RING,TCP,SQ,APP,OUT,IDLE step;
 ```
@@ -112,28 +112,37 @@ The IOKernel has two responsibilities:
 In the control path, the IOKernel decides how many cores each application should receive. In the data path, it steers incoming packets from the NIC into application shared-memory queues, polls application egress queues, and forwards outgoing packets back to the NIC. The first step in the control path is detecting congestion quickly enough to respond before queues become large.
 
 ```mermaid
+%%{init: {"flowchart": {"nodeSpacing": 58, "rankSpacing": 72, "curve": "basis"}} }%%
 flowchart LR
   NIC(("NIC"))
-  IOK["IOKernel"]
-  INQ["App ingress queue"]
-  APP["Application<br/>uthreads"]
-  OUTQ["App egress queue"]
-  CORE["Core allocator"]
-  C1["Core 1"]
-  C2["Core 2"]
-  IDLE["Idle core"]
+  IOK["IOKernel<br/>packet steering"]
 
-  NIC --> IOK --> INQ --> APP --> OUTQ --> IOK --> NIC
-  IOK -. "5 us congestion check" .-> INQ
-  IOK -. "assign / reclaim" .-> CORE
-  CORE --> C1
-  CORE --> C2
-  IDLE -. "steal uthreads<br/>or packets" .-> APP
+  subgraph CoreA["Core A: busy"]
+    direction TB
+    AIN["Ingress queue"]
+    AAPP["kthread + uthreads"]
+    AOUT["Egress queue"]
+    AIN --> AAPP --> AOUT
+  end
 
-  classDef step fill:transparent,stroke:#9aa0a6,stroke-width:1px,color:#161717;
-  classDef focus fill:transparent,stroke:#9b3d51,stroke-width:1.4px,color:#9b3d51;
-  class IOK focus;
-  class NIC,INQ,APP,OUTQ,CORE,C1,C2,IDLE step;
+  subgraph CoreB["Core B: idle"]
+    direction TB
+    BAPP["idle kthread"]
+  end
+
+  NIC ==>|"RX packets"| IOK
+  IOK -->|"steer flows"| AIN
+  AOUT -->|"TX batches"| IOK
+  BAPP -.->|"steal uthreads"| AAPP
+  BAPP -.->|"steal packets"| AIN
+  IOK ==>|"transmit"| NIC
+
+  classDef step fill:transparent,stroke:#9aa0a6,stroke-width:1px;
+  classDef focus fill:transparent,stroke:#9b3d51,stroke-width:1.4px;
+  classDef idle fill:transparent,stroke:#9aa0a6,stroke-width:1px,stroke-dasharray:5 5;
+  class NIC,IOK focus;
+  class CoreA,AIN,AAPP,AOUT step;
+  class CoreB,BAPP idle;
 ```
 
 #### Congestion Detection Algorithm

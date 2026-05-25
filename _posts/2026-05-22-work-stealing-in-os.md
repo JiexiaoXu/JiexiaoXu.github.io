@@ -81,7 +81,86 @@ The shuffle queue helps eliminate head-of-line blocking inside the scheduling la
 
 ZygOS uses inter-processor interrupts (IPIs) to address this case. An idle core can interrupt a remote core and force it to run the networking stack, replenishing the shuffle queue with stealable work. A similar issue appears for remote batched system calls, where queued work may need a prompt nudge to become visible to the rest of the scheduler.
 
+### Summary
+
+ZygOS brings work stealing into a kernel-bypass design. This directly addresses two causes of high tail latency in shared-nothing dataplanes: poor work conservation and head-of-line blocking. The cost is that ZygOS has to introduce carefully controlled sharing through the shuffle queue.
+
+However, ZygOS still assumes a relatively static allocation of cores. This leaves a second efficiency problem unresolved. To absorb bursty workloads, an application may still need many idle cores waiting for future demand. Linux can dynamically reallocate cores, but it does so at millisecond timescales, which is far slower than microsecond-scale requests. Shenango focuses on this mismatch between allocation granularity and workload granularity.
+
 ## Fast Core Allocation -- Shenango
+
+Shenango studies a related problem, but shifts the emphasis from work conservation within one application to resource efficiency across applications. As discussed earlier, systems often overprovision cores to preserve microsecond-scale tail latency under bursty load. Kernel-bypass systems can improve throughput, but they may still waste CPU cycles polling the NIC or keeping cores idle for bursts that may not arrive.
+
+The key observation in Shenango is that spare cores are useful, but they do not need to be permanently assigned. If the system can move cores quickly enough, it can keep fewer cores idle while still reacting to short bursts.
+
+Dynamic core allocation is not new. Linux and systems such as IX or Arachne can also rebalance cores, but they operate at millisecond or tens-of-milliseconds timescales. That is too slow for microsecond-scale work, so applications must still reserve extra cores to protect tail latency.
+
+Fast core allocation has two main questions:
+
+1. How can the system tell that an application needs more cores?
+2. How can it reassign cores with low enough overhead to matter at microsecond scale?
+
+Shenango answers these questions with an IOKernel, a dedicated kernel-bypass component that sits between the NIC and applications and manages core allocation.
+
+### IOKernel
+
+The IOKernel has two responsibilities:
+
+1. Minimize the number of idle cores the system needs to reserve
+2. Reallocate cores to applications with low overhead
+
+In the control path, the IOKernel decides how many cores each application should receive. In the data path, it steers incoming packets from the NIC into application shared-memory queues, polls application egress queues, and forwards outgoing packets back to the NIC. The first step in the control path is detecting congestion quickly enough to respond before queues become large.
+
+```mermaid
+flowchart LR
+  NIC(("NIC"))
+  IOK["IOKernel"]
+  INQ["App ingress queue"]
+  APP["Application<br/>uthreads"]
+  OUTQ["App egress queue"]
+  CORE["Core allocator"]
+  C1["Core 1"]
+  C2["Core 2"]
+  IDLE["Idle core"]
+
+  NIC --> IOK --> INQ --> APP --> OUTQ --> IOK --> NIC
+  IOK -. "5 us congestion check" .-> INQ
+  IOK -. "assign / reclaim" .-> CORE
+  CORE --> C1
+  CORE --> C2
+  IDLE -. "steal uthreads<br/>or packets" .-> APP
+
+  classDef step fill:transparent,stroke:#9aa0a6,stroke-width:1px,color:#161717;
+  classDef focus fill:transparent,stroke:#9b3d51,stroke-width:1.4px,color:#9b3d51;
+  class IOK focus;
+  class NIC,INQ,APP,OUTQ,CORE,C1,C2,IDLE step;
+```
+
+#### Congestion Detection Algorithm
+
+Shenango uses a simple congestion signal. If a packet remains in an application's queue across two checks separated by five microseconds, the application is considered congested. Shenango avoids using queue length directly because queue-length thresholds would require additional tuning parameters.
+
+> **Remark**: Treating five microseconds of queueing as congestion is implementation-friendly and keeps queues short. One question is whether relaxing this threshold could improve CPU efficiency while still protecting tail latency.
+
+#### Core Selection Algorithm
+
+Core selection has two sides. If idle cores exist, Shenango should allocate an idle core rather than preempting a busy one. If no idle core is available, the scheduler should avoid arbitrary preemption and instead choose a core that minimizes disruption.
+
+Shenango therefore prefers cores that are likely to have low switching cost, such as logical cores sharing the same physical core or cores that already have useful application state in cache. Both congestion detection and core selection run at five-microsecond granularity and have linear complexity in the number of cores, which makes microsecond-scale reallocation practical.
+
+This raises a useful design question: is five microseconds too frequent? Shenango chooses this aggressive interval to protect latency, but the tradeoff between responsiveness and allocation overhead is exactly where resource efficiency becomes interesting.
+
+#### Runtime Work Stealing 
+
+In Shenango's runtime, each core is bound to a kernel thread (`kthread`) and has a run queue of user-level threads (`uthreads`). This creates a familiar problem: when one application uses multiple cores, separate per-core run queues can again cause head-of-line blocking and poor work conservation.
+
+Shenango applies work stealing to user-level threads to reduce tail latency. It also allows `kthreads` to steal packets from remote ingress queues before TCP/IP processing. This is finer-grained than ZygOS, which steals socket work after TCP/IP processing, but it can introduce packet reordering.
+
+To handle reordering efficiently, Shenango relaxes the ordering requirement and uses a per-socket lock before TCP processing. The assumption is that packets from the same flow usually arrive at the same core over short timescales, so the lock overhead remains low and cache locality is mostly preserved. Compared with ZygOS, Shenango avoids using IPIs to force timely ingress processing, which helps keep CPU overhead lower.
+
+### Summary
+
+Shenango expands the picture from work conservation to resource efficiency. Its IOKernel reallocates cores at microsecond scale, using fast congestion detection and low-overhead core selection to reduce the number of idle cores needed for bursty workloads. At runtime, Shenango also uses finer-grained work stealing than ZygOS, stealing both `uthreads` and packets to reduce tail latency.
 
 ## Mitigating Interference -- Caladan
 

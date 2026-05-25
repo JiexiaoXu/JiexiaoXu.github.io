@@ -1179,6 +1179,21 @@ time {
   background: var(--panel);
 }
 
+.post-content .mermaid {
+  margin: 28px 0;
+  padding: 20px 10px;
+  overflow-x: auto;
+  border-block: 1px solid var(--rule);
+  background: transparent;
+}
+
+.post-content .mermaid svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto;
+}
+
 .post-content code {
   color: var(--code);
   font-family: var(--font-mono);

@@ -18,3 +18,33 @@ layout: base
     {{ content }}
   </div>
 </article>
+
+<script type="module">
+  import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs";
+
+  document.querySelectorAll("pre code.language-mermaid").forEach((block) => {
+    const diagram = document.createElement("div");
+    diagram.className = "mermaid";
+    diagram.textContent = block.textContent;
+    block.closest("pre").replaceWith(diagram);
+  });
+
+  mermaid.initialize({
+    startOnLoad: true,
+    theme: document.documentElement.dataset.mode === "dark" ? "dark" : "base",
+    themeVariables: {
+      fontFamily: "var(--font-ui)",
+      primaryColor: "transparent",
+      secondaryColor: "transparent",
+      tertiaryColor: "transparent",
+      background: "transparent",
+      primaryBorderColor: "var(--rule)",
+      primaryTextColor: "var(--ink)",
+      secondaryTextColor: "var(--ink)",
+      tertiaryTextColor: "var(--ink)",
+      lineColor: "var(--muted)",
+      clusterBkg: "transparent",
+      clusterBorder: "transparent"
+    }
+  });
+</script>
